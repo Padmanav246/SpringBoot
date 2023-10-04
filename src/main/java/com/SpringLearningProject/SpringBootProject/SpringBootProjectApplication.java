@@ -1,5 +1,6 @@
 package com.SpringLearningProject.SpringBootProject;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.SpringApplication;
@@ -18,12 +19,12 @@ public class SpringBootProjectApplication {
 		
 		//save
 		
-		User user=new User();
+		/*User user=new User();
 		user.setName("Padmanav");
 		user.setCity("HYD");
 		user.setStatus("working");
 		User user2=userRepo.save(user);
-		System.out.println(user2.toString());
+		System.out.println(user2.toString()); */
 		
 		//update
 		
@@ -34,9 +35,21 @@ public class SpringBootProjectApplication {
 //		User result = userRepo.save(user);
 //		System.out.println(result.toString());
 		
-//		//delete
-//		
+//		//delete	
 //		userRepo.deleteAll();
+		
+		
+//		List<User> users=userRepo.findByName("Padmanav");
+//		users.forEach(e->System.out.println(e));
+		
+		
+//		List<User> users=userRepo.getAllUser();
+//		users.forEach(e->System.out.println(e));
+		
+		
+		List<User> users=userRepo.getUserByIdAndCity(52,"HYD");
+		users.forEach(e->System.out.println(e));
+		
 		
 	}
 
