@@ -1,6 +1,8 @@
 package com.SpringLearningProject.SpringBootProject.RestOperation.ServicesImpl;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,10 @@ public class BookServiceImpl implements BookServices {
 	public Book BookById(int id) {
 		
 		return ReadBooks().stream().filter(e->e.getId()==id).findFirst().get();
+	}
+	@Override
+	public void deleteBook(int id) {
+	bookdao.deleteById(id);
 	}
 	
 }
