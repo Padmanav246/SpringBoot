@@ -1,6 +1,8 @@
 package com.SpringLearningProject.SpringBootProject.RestOperation.ServicesImpl;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -34,6 +36,17 @@ public class BookServiceImpl implements BookServices {
 	@Override
 	public void deleteBook(int id) {
 	bookdao.deleteById(id);
+	}
+	@Override
+	public void updateBook(Book book, int bookid) {
+		
+		Optional<Book> obj = bookdao.findById(bookid);
+		if(obj.isPresent()) {
+		Book book1 = obj.get();
+		book1.setTitle(book.getTitle());
+		book1.setAuthor(book.getAuthor());
+		bookdao.save(book1);
+		}
 	}
 	
 }
